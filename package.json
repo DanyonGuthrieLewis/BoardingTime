@@ -1,0 +1,27 @@
+{
+  "name": "boardingtime",
+  "version": "1.0.0",
+  "description": "It does things",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanyonGuthrieLewis/BoardingTime.git"
+  },
+  "author": "Ricardo, Brent, Danyon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanyonGuthrieLewis/BoardingTime/issues"
+  },
+  "homepage": "https://github.com/DanyonGuthrieLewis/BoardingTime#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.0.6",
+    "pug": "^2.0.0-rc.4"
+  }
+}
