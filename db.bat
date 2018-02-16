@@ -1,1 +1,0 @@
-"C:\Program Files\MongoDB\Server\3.6\bin\mongod" --dbpath "C:\Users\Admin\Documents\Homework\Web Development\Assignments\Lab 06 - Boarding Time\BoardingTime\data"
