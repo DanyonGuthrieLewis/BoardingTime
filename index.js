@@ -20,6 +20,13 @@ var urlencodedParser = bodyParser.urlencoded({
 })
 
 app.get('/', forum.messages);
-
+app.get('/login', auth.login);
+app.get('/logout', auth.logout);
+app.get('/register', auth.register);
+app.get('/profile', auth.profile);
+app.get('/profile/edit', auth.editProfile);
+app.post('/register', auth.registerPost);
+app.post('/login', auth.loginPost);
+app.put('/profilePut', auth.profilePut)
 
 app.listen(3000);
