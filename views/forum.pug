@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    each message in messages
+        img(src="https://api.adorable.io/avatars/" +message.avatar)
+        h4= message.user
+        p= message.text
+        p= message.date
+    
