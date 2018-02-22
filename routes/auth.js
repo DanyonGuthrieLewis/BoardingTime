@@ -25,6 +25,9 @@ exports.editProfile = function(req, res) {
 }
 
 exports.registerPost = function(req, res) {
+    console.log(req)
+    console.log(res)
+    /*
     var user = new User({
         name: req.body.username,
         age: req.body.age,
@@ -34,7 +37,8 @@ exports.registerPost = function(req, res) {
     if (err) return console.error(err);
     console.log(req.body.username + ' added');
     });
-    res.redirect('/');
+    */
+    res.redirect('/register');
 }
 
 exports.loginPost = function(req, res) {
