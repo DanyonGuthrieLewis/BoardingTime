@@ -1,10 +1,13 @@
 var db = require('./db.js')
 
-exports.messageSchema = db.mongoose.Schema({
+var messageSchema = db.mongoose.Schema({
     user: String,
     avatar: String,
     date: Date,
     text: String
 });
   
-exports.Message = db.mongoose.model('Message_Collection', messageSchema);
+var Message = db.mongoose.model('Message_Collection', messageSchema);
+
+exports.messageSchema;
+exports.Message;

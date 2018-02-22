@@ -1,11 +1,13 @@
 var db = require('./db.js')
 
-exports.userSchema = db.mongoose.Schema({
+var userSchema = db.mongoose.Schema({
     username: String,
     pass: String,
     avatar: String,
     admin: Boolean
 });
   
-exports.User = db.mongoose.model('User_Collection', userSchema);
+var User = db.mongoose.model('User_Collection', userSchema);
 
+exports.userSchema = userSchema;
+exports.User = User;
