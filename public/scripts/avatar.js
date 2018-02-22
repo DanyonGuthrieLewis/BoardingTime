@@ -6,5 +6,5 @@ function changed(){
     console.log(eye +"/"+ nose +"/"+ mouth +"/"+ color)
     document.getElementById("avat").src ="https://api.adorable.io/avatars/face/"+ eye +"/"+ nose +"/"+ mouth +"/"+ color ;
     
-    var url ="https://api.adorable.io/avatars/face/"+ eye +"/"+ nose +"/"+ mouth +"/"+ color ;
 }
+var url ="https://api.adorable.io/avatars/face/"+ eye +"/"+ nose +"/"+ mouth +"/"+ color ;
