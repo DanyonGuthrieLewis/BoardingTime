@@ -39,6 +39,7 @@ exports.registerPost = function(req, res) {
                 admin: false,
                 avatar: req.body.avatar
             });
+            console.log(user);
             user.save(function (err, user) {
                 if (err) {
                     return console.error(err);
