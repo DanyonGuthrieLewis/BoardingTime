@@ -28,29 +28,41 @@ exports.editProfile = function(req, res) {
 }
 
 exports.registerPost = function(req, res) {
-    bcrypt.hash(req.body.pass, null, null, function(err, hash){
+    User.findOne({'username': req.body.username}, 'username pass admin avatar', function (err, existinguser) {
         if (err) {
-            console.log(err);
-            res.redirect('/login');
+            console.log(err)
+            res.redirect('/login')
         } else {
-            var user = new User({
-                username: req.body.username,
-                pass: hash,
-                admin: false,
-                avatar: req.body.avatar
-            });
-            console.log(user);
-            user.save(function (err, user) {
-                if (err) {
-                    return console.error(err);
-                }
-                else {
-                    console.log(user.username + ' added with pass ' + user.pass);
-                }
-            });
-            res.redirect('/');
+            if (existinguser) {
+                console.log(req.body.username, "already exists");
+                res.redirect('/register');
+            } else {
+                bcrypt.hash(req.body.pass, null, null, function(err, hash){
+                    if (err) {
+                        console.log(err);
+                        res.redirect('/register');
+                    } else {
+                        var user = new User({
+                            username: req.body.username,
+                            pass: hash,
+                            admin: false,
+                            avatar: req.body.avatar
+                        });
+                       
+                        user.save(function (err, user) {
+                            if (err) {
+                                return console.error(err);
+                            }
+                            else {
+                                console.log(user.username + ' added with pass ' + user.pass);
+                            }
+                        });
+                        res.redirect('/');
+                    }
+                });  
+            }
         }
-    });    
+    });
 }
 
 exports.loginPost = function(req, res) {
