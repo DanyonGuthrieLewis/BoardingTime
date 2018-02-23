@@ -1,7 +1,7 @@
 var db = require('./db.js')
 
 var messageSchema = db.mongoose.Schema({
-    user: String,
+    username: String,
     avatar: String,
     date: Date,
     text: String
