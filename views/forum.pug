@@ -10,16 +10,17 @@ block content
                 p(class='messageText')= message.text
                 p(class='messageDate')= message.date
                 if username == message.username
-                    a Edit
-                    a Delete
+                    a(href='/') Edit 
+                    |
+                    button(type='button' action=deleteMsg(message)) Delete
                 else if admin
-                     a Delete 
+                    button(type='button' action=deleteMsg(message)) Delete
                 else
                     p fuck 
 
     if authorized
         img(class='userAvatar', src="https://api.adorable.io/avatars/" +avatar)
-        form(id='form', class='loginForm' method='post', action='/somethingsomething')
+        form(id='form', class='messageForm' method='post', action='/')
             input(type='text', name='message')
             input(type="submit", value="Send Message")
         

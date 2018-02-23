@@ -9,5 +9,5 @@ var messageSchema = db.mongoose.Schema({
   
 var Message = db.mongoose.model('Message_Collection', messageSchema);
 
-exports.messageSchema;
-exports.Message;
+exports.messageSchema = messageSchema;
+exports.Message = Message;
