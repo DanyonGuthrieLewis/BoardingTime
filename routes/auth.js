@@ -11,7 +11,13 @@ exports.login = function(req, res) {
 }
 
 exports.logout = function(req, res) {
-    res.render('logout');
+    req.session.destroy(function(err){
+        if(err){
+          console.log(err);
+        }else{
+          res.redirect('/');
+        }
+    });
 }
 
 exports.register = function(req, res) {
