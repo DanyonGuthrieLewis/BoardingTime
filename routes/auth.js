@@ -28,19 +28,17 @@ exports.editProfile = function(req, res) {
 }
 
 exports.registerPost = function(req, res) {
-    var user = new User({
-        username: req.body.username,
-        pass: req.body.pass,
-        admin: false,
-        avatar: req.body.avatar
-    });
-
-    bcrypt.hash(user.pass, null, null, function(err, hash){
+    bcrypt.hash(req.body.pass, null, null, function(err, hash){
         if (err) {
             console.log(err);
-            res.redirect('login');
+            res.redirect('/login');
         } else {
-            user.pass = hash;
+            var user = new User({
+                username: req.body.username,
+                pass: hash,
+                admin: false,
+                avatar: req.body.avatar
+            });
             user.save(function (err, user) {
                 if (err) {
                     return console.error(err);
@@ -55,8 +53,31 @@ exports.registerPost = function(req, res) {
 }
 
 exports.loginPost = function(req, res) {
-    console.log(req.body)
-    res.redirect('/login');
+
+    User.findOne({'username': req.body.username}, 'username pass admin avatar', function (err, user) {
+        if (err) {
+            console.log(err)
+            res.redirect('/login')
+        } else {
+            if (user) {
+                bcrypt.compare(req.body.pass, user.pass, function(err, success) {
+                    if (err) {
+                        res.redirect('/login');
+                    } else {
+                        console.log(success);
+                        if (success) {
+                            res.redirect('/');
+                        } else {
+                            res.redirect('/login');
+                        }
+                    }
+                }); 
+            } else {
+                console.log(req.body.username, 'does not exist')
+                res.redirect('/login');
+            }
+        }
+    });
 }
 
 exports.profilePut = function(req, res) {
