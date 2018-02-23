@@ -1,11 +1,12 @@
-var userModel = require('../models/user');
 var messageModel = require('../models/message');
 
 exports.messages = function(req, res) {
     res.render('forum', {
         title: 'Main Forum',
-        authorized: isAuth(),
-        user: userModel.User,
+        authorized: req.session.isAuthenticated,
+        username: req.session.username,
+        admin: req.session.admin,
+        avatar: req.session.avatar,
         messages: getMessages()
     })
 }
@@ -28,11 +29,4 @@ function getMessages(){
         messages = temp;
     }
     return messages;
-}
-
-function isAuth(){
-    if(userModel.User == null || userModel.User.username == ""){
-        return false;
-    }
-    return true;
 }
