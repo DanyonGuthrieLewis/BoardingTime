@@ -21,7 +21,6 @@ exports.logout = function(req, res) {
 }
 
 exports.register = function(req, res) {
-    
     res.render('register');
 }
 
@@ -30,7 +29,7 @@ exports.profile = function(req, res) {
 }
 
 exports.editProfile = function(req, res) {
-    res.send('todo');
+    res.render('edit-profile');
 }
 
 exports.registerPost = function(req, res) {
@@ -52,7 +51,9 @@ exports.registerPost = function(req, res) {
                             username: req.body.username,
                             pass: hash,
                             admin: false,
-                            avatar: req.body.avatar
+                            avatar: req.body.avatar,
+                            email: req.body.email,
+                            age: req.body.age
                         });
                        
                         user.save(function (err, user) {
