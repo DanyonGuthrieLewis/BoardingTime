@@ -64,8 +64,13 @@ exports.loginPost = function(req, res) {
                     if (err) {
                         res.redirect('/login');
                     } else {
-                        console.log(success);
                         if (success) {
+                            req.session.user = {
+                                isAuthenticated: true,
+                                username: user.username,
+                                avatar: user.avatar,
+                                admin: user.admin
+                              };
                             res.redirect('/');
                         } else {
                             res.redirect('/login');

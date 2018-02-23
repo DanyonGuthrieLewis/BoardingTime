@@ -3,8 +3,9 @@ var express = require('express'),
   path = require('path'),
   admin = require('./routes/admin.js'),
   auth = require('./routes/auth.js'),
-  forum = require('./routes/forum.js')
-  bodyParser = require('body-parser');
+  forum = require('./routes/forum.js'),
+  bodyParser = require('body-parser'),
+  expressSession = require('express-session');
 
 
 var app = express();
@@ -13,6 +14,12 @@ app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 
 app.use(express.static(path.join(__dirname + '/public')));
+
+app.use(expressSession({
+  secret: 'Whatever54321',
+  saveUninitialized: true,
+  resave: true
+}));
 
 var urlencodedParser = bodyParser.urlencoded({
   extended: true
