@@ -2,17 +2,20 @@ extends layout
 
 block content
     each message in messages
-        img(src="https://api.adorable.io/avatars/" +message.avatar)
-        h4= message.username
-        p= message.text
-        p= message.date
-        if user.username == message.username
-            a Edit
-            a Delete
-        else if user.admin
-             a Delete 
-        else
-            p fuck 
+        div(class="messageDiv")
+            div(class="messageUADiv")
+                img(class='messageAvatar', src="https://api.adorable.io/avatars/" +message.avatar)
+                h4(class='messageUser')= message.user
+            div(class="messageContent")
+                p(class='messageText')= message.text
+                p(class='messageDate')= message.date
+                if user.username == message.username
+                    a Edit
+                    a Delete
+                else if user.admin
+                     a Delete 
+                else
+                    p fuck 
 
     if authorized
       input(type='text', name='message')

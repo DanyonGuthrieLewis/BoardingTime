@@ -2,6 +2,15 @@ html{
     background-color: #23272A;
 }
 
+.titleHead{
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    background-color: #dbdbdb;
+    border-radius: 20px;
+    padding: 10px;
+}
+
 .contentDiv{
     background-color: #dbdbdb;
     border-radius: 10px;
@@ -39,5 +48,57 @@ html{
     margin: 5px;
 }
 
-.loginForm{
+.messageDiv{
+    padding: 10px;
+    width: 80%;
+    border: 2px solid gray;
+    border-radius: 10px;
+    margin: 5px;
+    background-color: #cfcfcf;
+    margin-left: 10%;
+}
+
+.messageDiv:hover{
+    background-color: #cad8d9;
+}
+
+.messageUADiv{
+    float: left;
+    height: 20%;
+    width: 19%;
+    text-align: center;
+}
+
+.messageAvatar{
+    width: 80%;
+    height: 50%;
+    border: 2px solid black;
+    margin: 10px;
+    margin-top: 15px;
+}
+
+.messageUser{
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+.messageContent{
+    margin-left: 10px;
+    width:80%;
+    float: right;
+}
+
+.messageDate{
+    float: right;
+    vertical-align: text-bottom;
+}
+
+
+.messageText{
+    height: 10%;
+    font-size: 20px;
+}
+
+.messageDiv{
+    width: 80%;
 }
