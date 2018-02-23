@@ -4,6 +4,7 @@ var messageModel = require('../models/message');
 exports.messages = function(req, res) {
     res.render('forum', {
         title: 'Main Forum',
+        authorized: isAuth(),
         user: userModel.User,
         messages: getMessages()
     })
@@ -26,5 +27,12 @@ function getMessages(){
     if(temp != null){
         messages = temp;
     }
-    return messages
+    return messages;
+}
+
+function isAuth(){
+    if(userModel.User == null || userModel.User.username == ""){
+        return false;
+    }
+    return true;
 }
