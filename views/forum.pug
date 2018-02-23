@@ -5,7 +5,7 @@ block content
         div(class="messageDiv")
             div(class="messageUADiv")
                 img(class='messageAvatar', src="https://api.adorable.io/avatars/" +message.avatar)
-                h4(class='messageUser')= message.user
+                h4(class='messageUser')= message.username
             div(class="messageContent")
                 p(class='messageText')= message.text
                 p(class='messageDate')= message.date
