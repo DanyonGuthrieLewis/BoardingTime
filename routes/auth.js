@@ -1,3 +1,5 @@
+
+
 var userModel = require('../models/user');
 
 var User = userModel.User;
@@ -26,15 +28,16 @@ exports.editProfile = function(req, res) {
 
 exports.registerPost = function(req, res) {
     var user = new User({
-        name: req.body.username,
-        age: req.body.age,
-        species: req.body.species
-      });
-    user.save(function (err, user) {
-    if (err) return console.error(err);
-    console.log(req.body.username + ' added');
+        username: req.body.username,
+        pass: req.body.pass,
+        admin: false,
+        avatar: req.body.avatar
     });
-    res.redirect('/');
+    user.save(function (err, user) {
+        if (err) return console.error(err);
+        console.log(req.body.username + ' added');
+    });
+    res.redirect('/register');
 }
 
 exports.loginPost = function(req, res) {

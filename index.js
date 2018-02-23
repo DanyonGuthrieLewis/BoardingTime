@@ -24,8 +24,8 @@ app.get('/logout', auth.logout);
 app.get('/register', auth.register);
 app.get('/profile', auth.profile);
 app.get('/profile/edit', auth.editProfile);
-app.post('/register', auth.registerPost);
-app.post('/login', auth.loginPost);
+app.post('/register', urlencodedParser, auth.registerPost);
+app.post('/login', urlencodedParser, auth.loginPost);
 app.put('/profilePut', auth.profilePut)
 
 app.listen(3000);

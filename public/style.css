@@ -1,0 +1,43 @@
+html{
+    background-color: #23272A;
+}
+
+.contentDiv{
+    background-color: #dbdbdb;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    height: 100%;
+    flex-flow: column;
+    display: flex;
+}
+
+.avatarBloc{
+    display: inline;
+    width: 600px;
+}
+
+.avatar{
+    border: 5px solid #000000;
+    border-radius: 4px;
+    width: 80%;
+    height: 80%;
+    float: left;
+}
+
+.menus{
+    float: right;
+    width: 50px;
+}
+
+.DDFields{
+    border: 2px solid #000000;
+    border-radius: 4px;
+    font-size: 30px;
+    background-color: coral;
+    padding: 5px;
+    margin: 5px;
+}
+
+.loginForm{
+}
