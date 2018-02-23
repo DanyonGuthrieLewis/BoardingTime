@@ -3,13 +3,13 @@ extends layout
 block content
 
     h3 Name Entry
-    form(id='form', method='post', action='/login')
-      label Username:
+    form(id='form', class='loginForm' method='post', action='/login')
+      label(class='loginLabel') Username:
       br
-      input(type='text', name='username')
+      input(type='text', name='username' class='inputField')
       br
-      label Password:
+      label(class='loginLabel') Password:
       br
-      input(type='password', name='pass')
+      input(type='password', name='pass' class='inputField')
       br
-      input(type='submit', value='submit')
+      input(type='submit', value='submit' class='loginSubmit')
