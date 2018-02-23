@@ -9,15 +9,18 @@ block content
             div(class="messageContent")
                 p(class='messageText')= message.text
                 p(class='messageDate')= message.date
-                if user.username == message.username
+                if username == message.username
                     a Edit
                     a Delete
-                else if user.admin
+                else if admin
                      a Delete 
                 else
                     p fuck 
 
     if authorized
-      input(type='text', name='message')
+        img(class='userAvatar', src="https://api.adorable.io/avatars/" +avatar)
+        form(id='form', class='loginForm' method='post', action='/somethingsomething')
+            input(type='text', name='message')
+            input(type="submit", value="Send Message")
         
     
