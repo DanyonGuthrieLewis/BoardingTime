@@ -17,11 +17,15 @@ block content
                     button(type='button' action=deleteMsg(message)) Delete
                 else
                     p fuck 
-
+                    
     if authorized
-        img(class='userAvatar', src="https://api.adorable.io/avatars/" +avatar)
-        form(id='form', class='messageForm' method='post', action='/')
-            input(type='text', name='message')
-            input(type="submit", value="Send Message")
+        div(class="submitMessage")
+            div(class="submitMessageDiv")
+                img(class='userAvatar', src="https://api.adorable.io/avatars/" +avatar)
+                div(class="smDiv")
+                    form(id='form', class='messageForm' method='post', action='/')
+                        textarea(name="message", cols="30", rows="6")
+                        input(class="messageSubmitButton" type="submit", value="Send Message")
+            
         
-    
+  

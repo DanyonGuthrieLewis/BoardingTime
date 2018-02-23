@@ -4,7 +4,9 @@ var userSchema = db.mongoose.Schema({
     username: String,
     pass: String,
     avatar: String,
-    admin: Boolean
+    admin: Boolean,
+    email: String,
+    age: Number,
 });
   
 var User = db.mongoose.model('User_Collection', userSchema);
