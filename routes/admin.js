@@ -12,6 +12,10 @@ exports.getUsers = function(req, res) {
             res.redirect('/');
         }
         console.log(users);
+
+        for(let i = 0; i < users.length; i++) {
+            users[i].profileURL = "./user/" + users[i].username;
+        }
         res.render('users', { 
             'users': users 
         });
@@ -19,7 +23,20 @@ exports.getUsers = function(req, res) {
 }
 
 exports.getUser = function(req, res) {
-    res.send('todo');
+    User.findOne({'username': req.params.username}, 'username pass admin avatar email age', function (err, user) {
+        if (err) {
+            console.log(err)
+            res.redirect('/')
+        } else {
+            if (user) {
+                res.render('profile', {
+                    'user': user
+                });
+            } else {
+               res.redirect('/admin/users')
+            }
+        }
+    });
 }
 
 exports.makeAdmin = function(req, res) {
