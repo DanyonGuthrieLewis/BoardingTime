@@ -141,5 +141,26 @@ exports.loginPost = function(req, res) {
 exports.editProfilePost = function(req, res) {
     console.log(req.body);
     console.log(req.session.user);
-
+    if (req.session.user){
+        User.findOne({'username': req.session.user.username}, 'username pass admin avatar email age', function (err, user) {
+            if (err) {
+                console.log(err)
+                res.redirect('/login')
+            } else {
+                if (user) {
+                    user.avatar = req.body.avatar;
+                    user.email = req.body.email;
+                    user.age = req.body.age;
+                    user.save(function (err, updatedUser) {
+                        if (err) return console.error(err);
+                        console.log(req.body.name + ' updated');
+                    });
+                } else {
+                   res.redirect('/profile/edit')
+                }
+            }
+        });
+    } else {
+        res.redirect('login');
+    }
 }

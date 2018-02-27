@@ -89,3 +89,7 @@ exports.messageDelete = function(req, res){
     var message = req.body.message
     Message.deleteOne(message);
 }
+
+exports.messageEdit = function(req, res){
+    //REMOVE THIS IF CAUSES CONFLICTS
+}
