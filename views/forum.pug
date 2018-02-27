@@ -10,21 +10,21 @@ block content
                 p(class='messageText')= message.text
                 p(class='messageDate')= message.date
                 if username == message.username
-                    form(id='edit', class='messageEdit' method='post', action='/edit')
-                        input(type="hidden" value=message.username)
-                        input(type="hidden" value=message.avatar)
-                        input(type="hidden" value=message.date)
-                        input(type="hidden" value=message.text)
+                    form(id='edit', class='edit' method='post', action='/editpage')
+                        input(type="hidden" name='username' value=message.username)
+                        input(type="hidden" name='avatar' value=message.avatar)
+                        input(type="hidden" name='date' value=message.date)
+                        input(type="hidden" name='text' value=message.text)
                         input(class="edit" type="submit", value="Edit")
                 
-                    form(id='delete', class='messageDelete' method='post', action='/delete')
+                    form(id='delete', class='delete' method='post', action='/delete')
                         input(type="hidden" name='username' value=message.username)
                         input(type="hidden" name='avatar' value=message.avatar)
                         input(type="hidden" name='date' value=message.date)
                         input(type="hidden" name='text' value=message.text)
                         input(class="delete" type="submit", value="Delete")
                 else if admin
-                    form(id='delete', class='messageDelete' method='post', action='/delete')
+                    form(id='delete', class='delete' method='post', action='/delete')
                         input(type="hidden" name='username' value=message.username)
                         input(type="hidden" name='avatar' value=message.avatar)
                         input(type="hidden" name='date' value=message.date)

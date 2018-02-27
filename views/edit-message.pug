@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    div(class="editMessageDiv")
+        img(class='messageAvatar', src=avatar)
+        h4(class='messageUser')= username
+        p(class='messageDate')= date
+        form(id='edit', class='messageEdit' method='post', action='/edit')
+            input(type="hidden" name='username' value=username)
+            input(type="hidden" name='avatar' value=avatar)
+            input(type="hidden" name='date' value=date)
+            input(type="hidden" name='text' value=text)
+            textarea(name="newText", cols="30", rows="6")= text
+            input(class="messageEdit" type="submit", value="Edit Message")

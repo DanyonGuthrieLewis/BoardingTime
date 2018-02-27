@@ -33,7 +33,8 @@ app.get('/profile/edit', auth.editProfile);
 app.post('/register', urlencodedParser, auth.registerPost);
 app.post('/login', urlencodedParser, auth.loginPost);
 app.post('/', urlencodedParser, forum.messagePost);
-app.post('/edit', urlencodedParser, forum.messageEdit);
+app.post('/edit', urlencodedParser, forum.messageEditPost);
+app.post('/editpage', urlencodedParser, forum.messageEditPage);
 app.post('/delete', urlencodedParser, forum.messageDelete);
 app.post('/profile/edit', urlencodedParser, auth.editProfilePost);
 

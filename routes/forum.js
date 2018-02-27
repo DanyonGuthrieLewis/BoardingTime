@@ -33,7 +33,7 @@ exports.messagePost = function(req, res) {
     var message = new Message({
         username: req.session.user.username,
         avatar: req.session.user.avatar,
-        date: new Date().getDate(),
+        date: new Date(),
         text: req.body.message
     });
     message.save(function (err, user) {
@@ -63,9 +63,11 @@ function getMessages(res, resData){
         if (err)
         { 
             console.error(err);
+            return res.status(500).send(err);
         }
-        else{
-            console.log(messages);
+        console.log(messages);
+        if(messages != undefined)
+        {
             temp = messages;
         }
         resData.messages = temp;
@@ -75,10 +77,39 @@ function getMessages(res, resData){
     
 }
 
-exports.messageEdit= function(req, res){
-    var message = req.body.message
-    //todo
-    res.redirect("/");
+exports.messageEditPage = function(req, res){
+    var message = {
+        username: req.body.username,
+        avatar: req.body.avatar,
+        date: req.body.date,
+        text: req.body.text
+    }
+    console.log(message.username +' Editing ' +message.text);
+    res.render('edit-message', message);
+}
+
+exports.messageEditPost = function(req, res){
+    var message = {
+        username: req.body.username,
+        avatar: req.body.avatar,
+        date: req.body.date,
+        text: req.body.text
+    }
+    var change = {
+        username: req.body.username,
+        avatar: req.body.avatar,
+        date: req.body.date,
+        text: req.body.newText
+    }
+    Message.findOneAndUpdate(message, change, function (err, msg) {
+            if (err)
+            { 
+                console.log(err);
+                return res.status(500).send(err);
+            }
+            console.log('Changing ' +message.text +' to ' +change.text);
+            return res.redirect('/');
+        });
 }
 
 
@@ -92,6 +123,7 @@ exports.messageDelete = function(req, res){
     Message.findOneAndRemove(message, function (err, msg) {  
         if (err) {
             console.log(err);
+            return res.status(500).send(err);
         }
         console.log(message +'deleted');        
         return res.redirect('/');
