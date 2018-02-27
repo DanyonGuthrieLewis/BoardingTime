@@ -50,5 +50,5 @@ app.get('/admin/users', checkAdmin, admin.getUsers);
 app.get('/admin/user/:username', checkAdmin, admin.getUser);
 app.get('/admin/make', admin.makeAdmin);
 app.post('/admin/delete', urlencodedParser, checkAdmin, admin.deleteUser);
-
+app.post('/admin/messages/delete', urlencodedParser, checkAdmin, admin.deleteMessage);
 app.listen(3000);

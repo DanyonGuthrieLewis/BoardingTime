@@ -1,9 +1,12 @@
 
 var userModel = require('../models/user');
+var messageModel = require('../models/message');
 
 var User = userModel.User;
 var userSchema = userModel.userSchema;
 
+var Message = messageModel.Message;
+var messageSchema = messageModel.messageSchema;
 
 exports.getUsers = function(req, res) {
     User.find(function (err, users) {
@@ -25,12 +28,28 @@ exports.getUsers = function(req, res) {
 exports.getUser = function(req, res) {
     User.findOne({'username': req.params.username}, 'username pass admin avatar email age', function (err, user) {
         if (err) {
-            console.log(err)
-            res.redirect('/')
+            console.log(err);
+            res.send(err);
         } else {
             if (user) {
-                res.render('profile', {
-                    'user': user
+                Message.find({'username': user.username}, function (err, messages) {
+                    if (err) {
+                        console.error(err);
+                        res.send(err);
+                    }
+                    if (messages && messages.length > 0) {
+                        res.render('profile', {
+                            'user': user,
+                            'hasMessages' : true,
+                            'messages' : messages
+                        });
+                    } else {
+                        res.render('profile', {
+                            'user': user,
+                            'hasMessages' : false,
+                            'messages' : []
+                        });
+                    }
                 });
             } else {
                res.redirect('/admin/users')
@@ -73,3 +92,14 @@ exports.deleteUser = function(req, res) {
         res.redirect('/admin/users');
     });
 }
+
+exports.deleteMessage = function(req, res) {
+    Message.findByIdAndRemove(req.body.id, function (err, message) {
+        if (err) {
+            console.error(err);
+            res.send(err);
+        }
+        res.redirect('/admin/user/' + req.body.username);
+    });
+}
+

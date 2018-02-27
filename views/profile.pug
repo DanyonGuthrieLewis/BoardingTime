@@ -2,6 +2,7 @@ extends layout
 
 block content
     div(id="user_profile")
+        img(src=user.avatar)
         div Username:
         div #{user.username}
         br
@@ -10,3 +11,21 @@ block content
         br
         div Age:
         div #{user.age}
+    div Messages:
+    if hasMessages
+        table
+            tr      
+                th id
+                th date
+                th ------------------- text ----------------------
+                th
+            each message in messages
+                tr
+                    td= message.id
+                    td= message.date
+                    td= message.text
+                    td 
+                        form(method='post', action='/admin/messages/delete') 
+                            input(name="id" type="hidden" value=message.id)
+                            input(name="username" type="hidden" value=user.username)
+                            input(type='submit' value='delete')

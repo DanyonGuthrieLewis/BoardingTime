@@ -13,7 +13,7 @@ block content
                     td= user.id
                     td= user.username
                     td 
-                     a(href=user.profileURL) view
+                        a(href=user.profileURL) view
                     td 
                         form(method='post', action='/admin/delete') 
                             input(name="id" type="hidden" value=user.id)
