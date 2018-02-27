@@ -29,7 +29,6 @@ app.get('/', forum.messages);
 app.get('/login', auth.login);
 app.get('/logout', auth.logout);
 app.get('/register', auth.register);
-app.get('/profile', auth.profile);
 app.get('/profile/edit', auth.editProfile);
 app.post('/register', urlencodedParser, auth.registerPost);
 app.post('/login', urlencodedParser, auth.loginPost);
@@ -37,5 +36,19 @@ app.post('/', urlencodedParser, forum.messagePost);
 app.post('/edit', urlencodedParser, forum.messageEdit);
 app.post('/delete', urlencodedParser, forum.messageDelete);
 app.post('/profile/edit', urlencodedParser, auth.editProfilePost);
+
+//Admin routes
+var checkAdmin = function(req, res, next) {
+  if(req.session.user && req.session.user.admin){
+    next();
+  }else{
+    res.redirect('/');
+  }
+}
+
+app.get('/admin/users', checkAdmin, admin.getUsers);
+app.get('/admin/user/:username', checkAdmin, admin.getUser);
+app.get('/admin/make/', admin.makeAdmin);
+app.post('/admin/delete/:username', checkAdmin, admin.deleteUser);
 
 app.listen(3000);
