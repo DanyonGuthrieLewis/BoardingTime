@@ -3,12 +3,7 @@ html{
 }
 
 .titleHead{
-<<<<<<< HEAD
-    width: 99%;
-    text-align: center;
-=======
     width: 98.5%;
->>>>>>> 17b384c2e109cdacce9a040397dbe282c8bed76c
     font-size: 40px;
     background-color: #dbdbdb;
     border-radius: 20px;
@@ -16,9 +11,26 @@ html{
 }
 
 .navbar{
-    font-size: 30px;
+    width: 15%;
+    font-size: 25px;
     padding: 10px;
     margin: 10px;
+    margin-left: 5%;
+    display: inline;
+}
+
+.buttonBar{
+    margin-left: 50%;
+    width: 10%;
+    display: inline;
+}
+
+.homebut, .profbut{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px;
+    background-color: #ced9ed;
 }
 
 .logbut, .profbut, .homebut, .regbut{
@@ -145,6 +157,7 @@ html{
     margin: 10px;
 }
 
+
 .loginSubmit{
     margin: 5px;
 }
@@ -153,3 +166,7 @@ html{
     font-size: 20px;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+  }

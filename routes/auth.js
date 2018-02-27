@@ -25,11 +25,44 @@ exports.register = function(req, res) {
 }
 
 exports.profile = function(req, res) {
+
     res.send('todo');
 }
 
 exports.editProfile = function(req, res) {
-    res.render('edit-profile');
+    if (req.session.user)
+    {
+        User.findOne({'username': req.session.user.username}, 'username pass admin avatar email age', function (err, user) {
+            if (err) {
+                console.log(err)
+                res.redirect('/login')
+            } else {
+                if (user) {
+                    var slicedAvatar = user.avatar.split('/');
+                    var eyes = slicedAvatar[5];
+                    var nose = slicedAvatar[6];
+                    var mouth = slicedAvatar[7];
+                    var color = slicedAvatar[8];
+                    console.log(mouth, eyes, nose, color);
+                    res.render('edit-profile', {
+                        'mouth' : mouth,
+                        'eye' : eyes,
+                        'nose' : nose,
+                        'color' : color,
+                        'avatar' : user.avatar,
+                        'username' : user.username,
+                        'avatar' : user.avatar,
+                        'email' : user.email,
+                        'age' : user.age
+                    });
+                } else {
+                   res.redirect('/login')
+                }
+            }
+        });
+    } else {
+        res.redirect('/login');
+    }
 }
 
 exports.registerPost = function(req, res) {
