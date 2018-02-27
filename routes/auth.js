@@ -39,9 +39,9 @@ exports.editProfile = function(req, res) {
             } else {
                 if (user) {
                     var slicedAvatar = user.avatar.split('/');
-                    var mouth = slicedAvatar[5];
-                    var eyes = slicedAvatar[6];
-                    var nose = slicedAvatar[7];
+                    var eyes = slicedAvatar[5];
+                    var nose = slicedAvatar[6];
+                    var mouth = slicedAvatar[7];
                     var color = slicedAvatar[8];
                     console.log(mouth, eyes, nose, color);
                     res.render('edit-profile', {

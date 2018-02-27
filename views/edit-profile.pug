@@ -43,8 +43,14 @@ block content
         option(value='303030', selected= false) Black
         option(value='888888', selected= false) Grey
         option(value='ffc0cb', selected= false) Pink 
+
+
         
-    script(src='/scripts/avatar.js')
+    form
+        input(id="startEye" type="hidden" value=eye)
+        input(id="startNose" type="hidden" value=nose)
+        input(id="startMouth" type="hidden" value=mouth)
+        input(id="startColor" type="hidden" value=color)
 
     form(id='form' method='post', action='/register' class="registerForm") 
         input(id="avatar_input" name="avatar" type="hidden" value=avatar)
@@ -60,3 +66,6 @@ block content
         input(type='submit', value='submit' id="age")
 
     img(id="avat", class="avatar", src=avatar)
+
+    
+    script(src='/scripts/avatar.js')
