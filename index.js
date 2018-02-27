@@ -34,6 +34,8 @@ app.get('/profile/edit', auth.editProfile);
 app.post('/register', urlencodedParser, auth.registerPost);
 app.post('/login', urlencodedParser, auth.loginPost);
 app.post('/', urlencodedParser, forum.messagePost)
+app.post('/edit', urlencodedParser, forum.messageEdit)
+app.post('/delete', urlencodedParser, forum.messageDelete)
 app.put('/profilePut', auth.profilePut)
 
 app.listen(3000);

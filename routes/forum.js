@@ -9,7 +9,7 @@ exports.messages = function(req, res) {
         res.render('forum', {
             title: 'Main Forum',
             authorized: false,
-            username: 'Taco',
+            username: undefined,
             admin: false,
             avatar: null,
             messages: getMessages()
@@ -59,12 +59,12 @@ function getMessages(){
 
     ]
     
-    var temp = Message.find({ 'text': '' }, 'username avatar date text', function (err, person) {
+    var temp = Message.find({},'username avatar date text', function (err, msg) {
         if (err) 
         { 
             return handleError(err);
         }
-        console.log('messages returned');
+        console.log(temp);
       });
     if(temp != null){
         messages == temp;
@@ -73,6 +73,9 @@ function getMessages(){
     return messages;
 }
 
-function deleteMsg(message){
-    
+
+
+exports.messageDelete = function(req, res){
+    var message = req.body.message
+    Message.deleteOne(message);
 }
