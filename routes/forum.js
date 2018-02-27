@@ -5,36 +5,28 @@ var Message = messageModel.Message;
 var messageSchema = messageModel.messageSchema;
 
 exports.messages = function(req, res) {
-
-    //Brad
-    //This should be how one gets all the messages in the db.
-    //Hope this helps
-    //Danyon
-    Message.find(function (err, messages) {
-        if (err) return console.error(err);
-        console.log(messages);
-    });
-
+    var resData;
     if(req.session.user == undefined){
-        res.render('forum', {
+        resData = {
             title: 'Main Forum',
             authorized: false,
             username: undefined,
             admin: false,
             avatar: null,
-            messages: getMessages()
-        });
+            messages: {}
+        }
     }
     else{
-        res.render('forum', {
+        resData = {
             title: 'Main Forum',
             authorized: true,
             username: req.session.user.username,
             admin: req.session.user.admin,
             avatar: req.session.user.avatar,
-            messages: getMessages()
-        });
+            messages: {}
+        }
     }
+    getMessages(res, resData);
 }
 
 exports.messagePost = function(req, res) {
@@ -55,37 +47,53 @@ exports.messagePost = function(req, res) {
     res.redirect('/');
 }
 
-function getMessages(){
-    var messages = [
+function getMessages(res, resData){
+    var temp = [
     {username: 'Taco',
-    avatar: '285/abott@adorable.png',
+    avatar: 'https://api.adorable.io/avatars/285/abott@adorable.png',
     date: '1/1/1',
     text: 'This is a test message'},
 
     {username: 'Taco',
-    avatar: '285/abott@adorable.png',
+    avatar: 'https://api.adorable.io/avatars/285/abott@adorable.png',
     date: '1/2/1',
     text: 'This is another test message'}
-
     ]
-    
-    var temp = Message.find({},'username avatar date text', function (err, msg) {
-        if (err) 
+    Message.find(function (err, messages) {
+        if (err)
         { 
-            return handleError(err);
+            console.error(err);
         }
-        console.log(temp);
-      });
-    if(temp != null){
-        messages == temp;
-    }
+        else{
+            console.log(messages);
+            temp = messages;
+        }
+        resData.messages = temp;
+        res.render('forum', resData);
+    });
 
-    return messages;
+    
+}
+
+exports.messageEdit= function(req, res){
+    var message = req.body.message
+    
+    res.redirect("/");
 }
 
 
-
 exports.messageDelete = function(req, res){
-    var message = req.body.message
-    Message.deleteOne(message);
+    var message = {
+        username: req.body.username,
+        avatar: req.body.avatar,
+        date: req.body.date,
+        text: req.body.text
+    }
+    Message.findOneAndRemove(message, function (err, msg) {  
+        if (err) {
+            console.log(err);
+        }
+        console.log(message +'deleted');        
+        return res.redirect('/');
+    });
 }

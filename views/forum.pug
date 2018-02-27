@@ -4,28 +4,37 @@ block content
     each message in messages
         div(class="messageDiv")
             div(class="messageUADiv")
-                img(class='messageAvatar', src="https://api.adorable.io/avatars/" +message.avatar)
+                img(class='messageAvatar', src=message.avatar)
                 h4(class='messageUser')= message.username
             div(class="messageContent")
                 p(class='messageText')= message.text
                 p(class='messageDate')= message.date
                 if username == message.username
                     form(id='edit', class='messageEdit' method='post', action='/edit')
-                        input(type="hidden" value=message)
+                        input(type="hidden" value=message.username)
+                        input(type="hidden" value=message.avatar)
+                        input(type="hidden" value=message.date)
+                        input(type="hidden" value=message.text)
                         input(class="edit" type="submit", value="Edit")
                 
                     form(id='delete', class='messageDelete' method='post', action='/delete')
-                        input(type="hidden" value=message)
+                        input(type="hidden" name='username' value=message.username)
+                        input(type="hidden" name='avatar' value=message.avatar)
+                        input(type="hidden" name='date' value=message.date)
+                        input(type="hidden" name='text' value=message.text)
                         input(class="delete" type="submit", value="Delete")
                 else if admin
                     form(id='delete', class='messageDelete' method='post', action='/delete')
-                        input(type="hidden" value=message)
+                        input(type="hidden" name='username' value=message.username)
+                        input(type="hidden" name='avatar' value=message.avatar)
+                        input(type="hidden" name='date' value=message.date)
+                        input(type="hidden" name='text' value=message.text)
                         input(class="delete" type="submit", value="Delete")
                     
     if authorized
         div(class="submitMessage")
             div(class="submitMessageDiv")
-                img(class='userAvatar', src="https://api.adorable.io/avatars/" +avatar)
+                img(class='userAvatar', src=avatar)
                 div(class="smDiv")
                     form(id='form', class='messageForm' method='post', action='/')
                         textarea(name="message", cols="30", rows="6")
