@@ -6,7 +6,16 @@ var userSchema = userModel.userSchema;
 
 
 exports.getUsers = function(req, res) {
-    res.send('todo');
+    User.find(function (err, users) {
+        if (err) {
+            console.error(err);
+            res.redirect('/');
+        }
+        console.log(users);
+        res.render('users', { 
+            'users': users 
+        });
+    });
 }
 
 exports.getUser = function(req, res) {
@@ -39,5 +48,11 @@ exports.makeAdmin = function(req, res) {
 }
 
 exports.deleteUser = function(req, res) {
-    res.send('todo');
+    User.findByIdAndRemove(req.body.id, function (err, user) {
+        if (err) {
+            console.error(err);
+            res.redirect('/admin/users');
+        }
+        res.redirect('/admin/users');
+    });
 }

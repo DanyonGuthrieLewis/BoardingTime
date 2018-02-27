@@ -48,7 +48,7 @@ var checkAdmin = function(req, res, next) {
 
 app.get('/admin/users', checkAdmin, admin.getUsers);
 app.get('/admin/user/:username', checkAdmin, admin.getUser);
-app.get('/admin/make/', admin.makeAdmin);
-app.post('/admin/delete/:username', checkAdmin, admin.deleteUser);
+app.get('/admin/make', admin.makeAdmin);
+app.post('/admin/delete', urlencodedParser, checkAdmin, admin.deleteUser);
 
 app.listen(3000);
