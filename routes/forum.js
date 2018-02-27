@@ -66,7 +66,7 @@ function getMessages(res, resData){
             return res.status(500).send(err);
         }
         console.log(messages);
-        if(messages != undefined)
+        if(messages.length != 0)
         {
             temp = messages;
         }
