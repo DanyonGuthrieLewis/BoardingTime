@@ -77,7 +77,7 @@ function getMessages(res, resData){
 
 exports.messageEdit= function(req, res){
     var message = req.body.message
-    
+    //todo
     res.redirect("/");
 }
 

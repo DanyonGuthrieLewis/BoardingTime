@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    div(id="UserList")
+        table
+            tr      
+                th id
+                th username
+                th
+                th
+            each user in users
+                tr
+                    td= user.id
+                    td= user.username
+                    td 
+                        a(href=user.profileURL) view
+                    td 
+                        form(method='post', action='/admin/delete') 
+                            input(name="id" type="hidden" value=user.id)
+                            input(type='submit', value='delete')
