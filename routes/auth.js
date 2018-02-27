@@ -138,6 +138,8 @@ exports.loginPost = function(req, res) {
     });
 }
 
-exports.profilePut = function(req, res) {
-    res.send('todo')
+exports.editProfilePost = function(req, res) {
+    console.log(req.body);
+    console.log(req.session.user);
+
 }
