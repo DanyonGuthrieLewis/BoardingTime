@@ -10,13 +10,17 @@ block content
                 p(class='messageText')= message.text
                 p(class='messageDate')= message.date
                 if username == message.username
-                    a(href='/') Edit 
-                    |
-                    
+                    form(id='edit', class='messageEdit' method='post', action='/edit')
+                        input(type="hidden" value=message)
+                        input(class="edit" type="submit", value="Edit")
+                
+                    form(id='delete', class='messageDelete' method='post', action='/delete')
+                        input(type="hidden" value=message)
+                        input(class="delete" type="submit", value="Delete")
                 else if admin
-                    
-                else
-                    p fuck 
+                    form(id='delete', class='messageDelete' method='post', action='/delete')
+                        input(type="hidden" value=message)
+                        input(class="delete" type="submit", value="Delete")
                     
     if authorized
         div(class="submitMessage")
