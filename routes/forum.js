@@ -5,6 +5,16 @@ var Message = messageModel.Message;
 var messageSchema = messageModel.messageSchema;
 
 exports.messages = function(req, res) {
+
+    //Brad
+    //This should be how one gets all the messages in the db.
+    //Hope this helps
+    //Danyon
+    Message.find(function (err, messages) {
+        if (err) return console.error(err);
+        console.log(messages);
+    });
+
     if(req.session.user == undefined){
         res.render('forum', {
             title: 'Main Forum',
