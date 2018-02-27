@@ -8,3 +8,9 @@ function changed(){
     document.getElementById("avatar_input").value ="https://api.adorable.io/avatars/face/"+ eye +"/"+ nose +"/"+ mouth +"/"+ color ;
 }
 var url ="https://api.adorable.io/avatars/face/"+ eye +"/"+ nose +"/"+ mouth +"/"+ color ;
+
+console.log(document.getElementById("nose"))
+
+for (let i = 0; i < document.getElementById("nose").options.length; i++) {
+    console.log(document.getElementById("nose").options[i])
+}
