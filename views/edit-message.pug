@@ -2,7 +2,7 @@ extends layout
 
 block content
     div(class="messageDiv")
-        img(class='messageAvatar', src=avatar)
+        img(class='userAvatar', src=avatar)
         h4(class='messageUser')= username
         p(class='messageDate')= date
         form(id='edit', class='messageEdit' method='post', action='/edit')

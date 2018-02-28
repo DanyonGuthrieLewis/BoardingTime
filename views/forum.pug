@@ -15,30 +15,29 @@ block content
                         input(type="hidden" name='avatar' value=message.avatar)
                         input(type="hidden" name='date' value=message.date)
                         input(type="hidden" name='text' value=message.text)
-                        input(class="optnBtn" type="submit", value="Edit")
+                        input(class="coolBtn" type="submit", value="Edit")
                 
                     form(id='delete', class='delete' method='post', action='/delete')
                         input(type="hidden" name='username' value=message.username)
                         input(type="hidden" name='avatar' value=message.avatar)
                         input(type="hidden" name='date' value=message.date)
                         input(type="hidden" name='text' value=message.text)
-                        input(class="optnBtn" type="submit", value="Delete")
+                        input(class="coolBtn" type="submit", value="Delete")
                 else if admin
                     form(id='delete', class='delete' method='post', action='/delete')
                         input(type="hidden" name='username' value=message.username)
                         input(type="hidden" name='avatar' value=message.avatar)
                         input(type="hidden" name='date' value=message.date)
                         input(type="hidden" name='text' value=message.text)
-                        input(class="optnBtn" type="submit", value="Delete")
+                        input(class="coolBtn" type="submit", value="Delete")
                     
     if authorized
         div(class="submitMessage")
             div(class="submitMessageDiv")
                 img(class='userAvatar', src=avatar)
-                div(class="smDiv")
-                    form(id='form', class='messageForm' method='post', action='/')
-                        textarea(name="message", cols="150", rows="3")
-                        input(class="messageSubmitButton" type="submit", value="Send Message")
+                form(id='form', class='messageForm' method='post', action='/')
+                    input(class="wideTextbox" type="text" name="message")
+                    input(class="coolBtn messageSubmitButton" type="submit", value="Send Message")
             
         
   

@@ -137,22 +137,32 @@ html{
 .submitMessageDiv{
     min-height: 100px;
     min-width: 200px;
-    width: 50%;
+    width: 100%;
 }
 
 .userAvatar{
-    height: 20%;
-    width: 20%;
+    height: 10%;
+    width: 10%;
     float: left;
     border: 2px black solid;
     border-radius: 10px;
     margin: 0 10px;
 }
-.smDiv{
-    vertical-align: bottom;
+.messageForm{
     display: flex;
 }
 
+.coolBtn{
+    float: left;
+    margin: 3px;
+    background-color: rgb(235, 235, 235);
+    border: 1px rgb(99, 112, 124) solid;
+    border-radius: 3px;
+}
+.coolBtn:hover{
+    border: 1px rgb(100, 189, 219) solid;
+    background-color: rgb(255, 255, 255);
+}
 .messageSubmitButton{
     float: right;
     margin: 10px;
@@ -172,14 +182,7 @@ a {
     text-decoration: none;
   }
 
-.optnBtn{
-    float: left;
-    margin: 3px;
-    background-color: rgb(235, 235, 235);
-    border: 1px rgb(99, 112, 124) solid;
-    border-radius: 3px;
-}
-.optnBtn:hover{
-    border: 1px rgb(100, 189, 219) solid;
-    background-color: lavender;
+
+.wideTextbox{
+    width: 100%;
 }
