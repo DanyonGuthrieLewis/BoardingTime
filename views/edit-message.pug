@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    div(class="editMessageDiv")
+    div(class="messageDiv")
         img(class='messageAvatar', src=avatar)
         h4(class='messageUser')= username
         p(class='messageDate')= date
@@ -10,5 +10,5 @@ block content
             input(type="hidden" name='avatar' value=avatar)
             input(type="hidden" name='date' value=date)
             input(type="hidden" name='text' value=text)
-            textarea(name="newText", cols="30", rows="6")= text
+            textarea(name="newText", cols="150", rows="3")= text
             input(class="messageEdit" type="submit", value="Edit Message")

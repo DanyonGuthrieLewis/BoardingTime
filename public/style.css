@@ -99,8 +99,8 @@ html{
     width: 80%;
     height: 50%;
     border: 2px solid black;
-    margin: 10px;
-    margin-top: 15px;
+    border-radius: 10px;
+    margin: 15px 10px 5px 10px;
 }
 
 .messageUser{
@@ -130,7 +130,7 @@ html{
 }
 
 .submitMessage{
-    margin-left: 35%;
+    margin: 1% 10%;
     text-align: center;
 }
 
@@ -146,6 +146,7 @@ html{
     float: left;
     border: 2px black solid;
     border-radius: 10px;
+    margin: 0 10px;
 }
 .smDiv{
     vertical-align: bottom;
@@ -170,3 +171,15 @@ a {
     color: black;
     text-decoration: none;
   }
+
+.optnBtn{
+    float: left;
+    margin: 3px;
+    background-color: rgb(235, 235, 235);
+    border: 1px rgb(99, 112, 124) solid;
+    border-radius: 3px;
+}
+.optnBtn:hover{
+    border: 1px rgb(100, 189, 219) solid;
+    background-color: lavender;
+}
