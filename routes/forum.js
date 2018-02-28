@@ -8,7 +8,6 @@ exports.messages = function(req, res) {
     var resData;
     if(req.session.user == undefined){
         resData = {
-            title: 'Main Forum',
             authorized: false,
             username: undefined,
             admin: false,
@@ -18,7 +17,6 @@ exports.messages = function(req, res) {
     }
     else{
         resData = {
-            title: 'Main Forum',
             authorized: true,
             username: req.session.user.username,
             admin: req.session.user.admin,
@@ -73,8 +71,6 @@ function getMessages(res, resData){
         resData.messages = temp;
         res.render('forum', resData);
     });
-
-    
 }
 
 exports.messageEditPage = function(req, res){

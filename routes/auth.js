@@ -25,7 +25,7 @@ exports.register = function(req, res) {
 }
 
 exports.profile = function(req, res) {
-
+    
     res.send('todo');
 }
 
@@ -45,6 +45,7 @@ exports.editProfile = function(req, res) {
                     var color = slicedAvatar[8];
                     console.log(mouth, eyes, nose, color);
                     res.render('edit-profile', {
+                        authorized: true,
                         'mouth' : mouth,
                         'eye' : eyes,
                         'nose' : nose,

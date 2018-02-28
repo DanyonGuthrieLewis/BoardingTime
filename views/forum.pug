@@ -15,21 +15,21 @@ block content
                         input(type="hidden" name='avatar' value=message.avatar)
                         input(type="hidden" name='date' value=message.date)
                         input(type="hidden" name='text' value=message.text)
-                        input(class="coolBtn" type="submit", value="Edit")
+                        input(class="coolBtn fltLft" type="submit", value="Edit")
                 
                     form(id='delete', class='delete' method='post', action='/delete')
                         input(type="hidden" name='username' value=message.username)
                         input(type="hidden" name='avatar' value=message.avatar)
                         input(type="hidden" name='date' value=message.date)
                         input(type="hidden" name='text' value=message.text)
-                        input(class="coolBtn" type="submit", value="Delete")
+                        input(class="coolBtn fltLft" type="submit", value="Delete")
                 else if admin
                     form(id='delete', class='delete' method='post', action='/delete')
                         input(type="hidden" name='username' value=message.username)
                         input(type="hidden" name='avatar' value=message.avatar)
                         input(type="hidden" name='date' value=message.date)
                         input(type="hidden" name='text' value=message.text)
-                        input(class="coolBtn" type="submit", value="Delete")
+                        input(class="coolBtn fltLft" type="submit", value="Delete")
                     
     if authorized
         div(class="submitMessage")

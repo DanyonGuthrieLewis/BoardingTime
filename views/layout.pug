@@ -10,11 +10,16 @@ html
                     div(class="navbar")
                         a(class="homebut" href="/") Home
                         a(class="profbut" href="/profile/edit") Profile
+                    
                     div(class="buttonBar")
-                        a(class="logbut" href="/login")
-                            button(class="LogRegButton" type="button") Login
-                        a(class="regbut" href="/register")
-                            button(class="LogRegButton" type="button") Register
+                        if authorized
+                            a(class="logbut" href="/logout")
+                                button(class="LogRegButton coolBtn" type="button") Log Out
+                        else
+                            a(class="logbut" href="/login")
+                                button(class="LogRegButton coolBtn" type="button") Login
+                            a(class="regbut" href="/register")
+                                button(class="LogRegButton coolBtn" type="button") Register
         body
             div(class='contentDiv')
                 block content

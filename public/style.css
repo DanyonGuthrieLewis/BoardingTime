@@ -152,17 +152,6 @@ html{
     display: flex;
 }
 
-.coolBtn{
-    float: left;
-    margin: 3px;
-    background-color: rgb(235, 235, 235);
-    border: 1px rgb(99, 112, 124) solid;
-    border-radius: 3px;
-}
-.coolBtn:hover{
-    border: 1px rgb(100, 189, 219) solid;
-    background-color: rgb(255, 255, 255);
-}
 .messageSubmitButton{
     float: right;
     margin: 10px;
@@ -182,6 +171,20 @@ a {
     text-decoration: none;
   }
 
+.coolBtn{
+    margin: 3px;
+    background-color: rgb(235, 235, 235);
+    border: 1px rgb(99, 112, 124) solid;
+    border-radius: 3px;
+}
+.coolBtn:hover{
+    border: 1px rgb(100, 189, 219) solid;
+    background-color: rgb(255, 255, 255);
+}
+
+.fltLft{
+    float: left;
+}
 
 .wideTextbox{
     width: 100%;
