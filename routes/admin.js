@@ -20,7 +20,9 @@ exports.getUsers = function(req, res) {
             users[i].profileURL = "./user/" + users[i].username;
         }
         res.render('users', { 
-            'users': users 
+            'users': users,
+            'authorized' : true,
+            'admin' : true 
         });
     });
 }
@@ -41,12 +43,16 @@ exports.getUser = function(req, res) {
                         res.render('profile', {
                             'user': user,
                             'hasMessages' : true,
+                            'authorized' : true,
+                            'admin' : true,
                             'messages' : messages
                         });
                     } else {
                         res.render('profile', {
                             'user': user,
                             'hasMessages' : false,
+                            'authorized' : true,
+                            'admin' : true,
                             'messages' : []
                         });
                     }
@@ -87,8 +93,25 @@ exports.deleteUser = function(req, res) {
     User.findByIdAndRemove(req.body.id, function (err, user) {
         if (err) {
             console.error(err);
-            res.redirect('/admin/users');
+            res.send(err);
         }
+        Message.find({'username' : user.username}, function(err, messages) {
+            if (err) {
+                console.log(err);
+            } else {
+                if (messages && messages.length > 0) {
+                    for(let i = 0; i < messages.length; i++) {
+                        Message.findByIdAndRemove(messages[i].id, function(err, message) {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                console.log(message, "removed");
+                            }
+                        });
+                    } 
+                }
+            }
+        });
         res.redirect('/admin/users');
     });
 }

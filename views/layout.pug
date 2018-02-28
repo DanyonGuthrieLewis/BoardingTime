@@ -20,6 +20,9 @@ html
                                 button(class="LogRegButton coolBtn" type="button") Login
                             a(class="regbut" href="/register")
                                 button(class="LogRegButton coolBtn" type="button") Register
+                        if admin
+                            a(class="logbut" href="/admin/users")
+                                button(class="LogRegButton coolBtn" type="button") Admin
         body
             div(class='contentDiv')
                 block content

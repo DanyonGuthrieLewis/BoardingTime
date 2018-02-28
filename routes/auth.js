@@ -1,10 +1,14 @@
 var bcrypt = require('bcrypt-nodejs');
 
 var userModel = require('../models/user');
+var messageModel = require('../models/message');
 
 var myHash;
 var User = userModel.User;
 var userSchema = userModel.userSchema;
+
+var Message = messageModel.Message;
+var messageSchema = messageModel.messageSchema;
 
 exports.login = function(req, res) {
     res.render('login');
@@ -140,8 +144,6 @@ exports.loginPost = function(req, res) {
 }
 
 exports.editProfilePost = function(req, res) {
-    console.log(req.body);
-    console.log(req.session.user);
     if (req.session.user){
         User.findOne({'username': req.session.user.username}, 'username pass admin avatar email age', function (err, user) {
             if (err) {
@@ -152,9 +154,31 @@ exports.editProfilePost = function(req, res) {
                     user.avatar = req.body.avatar;
                     user.email = req.body.email;
                     user.age = req.body.age;
+                    req.session.user = user;
                     user.save(function (err, updatedUser) {
-                        if (err) return console.error(err);
-                        console.log(req.body.name + ' updated');
+                        if (err) {
+                            console.error(err);
+                            res.send(err);
+                        } else {
+                            Message.find({ 
+                                "username": updatedUser.username
+                            }, function(err, messages) {
+                                if (err) {
+                                    console.log(err)
+                                    res.send(err);
+                                } else {
+                                    if (messages && messages.length > 0) {
+                                        for (let i = 0; i < messages.length; i++ ) {
+                                            let message = messages[i];
+                                            message.avatar = updatedUser.avatar;
+                                            message.save(function() {});
+                                        }
+                                    }
+                                    res.redirect('/profile/edit');
+                                }
+                            });
+                        }
+
                     });
                 } else {
                    res.redirect('/profile/edit')
