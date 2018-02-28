@@ -1,68 +1,68 @@
 extends layout
 
 block content
-    
-    div(class="menus")
-    select(id='eye', class='DDFields',form='eyes', name='propertyType', onchange='changed()')
-        option(value='eyes1', selected= true) Eyes 1
-        option(value='eyes2', selected= false) Eyes 2
-        option(value='eyes3', selected= false) Eyes 3
-        option(value='eyes4', selected= false) Eyes 4
-        option(value='eyes5', selected= false) Eyes 5
-        option(value='eyes6', selected= false) Eyes 6
-        option(value='eyes7', selected= false) Eyes 7
-        option(value='eyes9', selected= false) Eyes 8
-        option(value='eyes10', selected= false) Eyes 9
+    div(class='avatarBloc')
+        div(class="menus")
+            select(id='eye', class='DDFields',form='eyes', name='propertyType', onchange='changed()')
+                option(value='eyes1', selected= true) Eyes 1
+                option(value='eyes2', selected= false) Eyes 2
+                option(value='eyes3', selected= false) Eyes 3
+                option(value='eyes4', selected= false) Eyes 4
+                option(value='eyes5', selected= false) Eyes 5
+                option(value='eyes6', selected= false) Eyes 6
+                option(value='eyes7', selected= false) Eyes 7
+                option(value='eyes9', selected= false) Eyes 8
+                option(value='eyes10', selected= false) Eyes 9
 
-    select(id='nose', class="DDFields",form='noses', name='propertyType', onchange='changed()')
-        option(value='nose2', selected= true) Nose 1
-        option(value='nose3', selected= false) Nose 2
-        option(value='nose4', selected= false) Nose 3
-        option(value='nose5', selected= false) Nose 4
-        option(value='nose6', selected= false) Nose 5
-        option(value='nose7', selected= false) Nose 6
-        option(value='nose8', selected= false) Nose 7
-        option(value='nose9', selected= false) Nose 8
+            select(id='nose', class="DDFields",form='noses', name='propertyType', onchange='changed()')
+                option(value='nose2', selected= true) Nose 1
+                option(value='nose3', selected= false) Nose 2
+                option(value='nose4', selected= false) Nose 3
+                option(value='nose5', selected= false) Nose 4
+                option(value='nose6', selected= false) Nose 5
+                option(value='nose7', selected= false) Nose 6
+                option(value='nose8', selected= false) Nose 7
+                option(value='nose9', selected= false) Nose 8
 
-    select(id='mouth',class="DDFields",form='mouths', name='propertyType', onchange='changed()')
-        option(value='mouth1', selected= true) Mouth 1
-        option(value='mouth3', selected= false) Mouth 2
-        option(value='mouth5', selected= false) Mouth 3
-        option(value='mouth6', selected= false) Mouth 4
-        option(value='mouth7', selected= false) Mouth 5
-        option(value='mouth9', selected= false) Mouth 6
-        option(value='mouth10', selected= false) Mouth 7
-        option(value='mouth11', selected= false) Mouth 8
+            select(id='mouth',class="DDFields",form='mouths', name='propertyType', onchange='changed()')
+                option(value='mouth1', selected= true) Mouth 1
+                option(value='mouth3', selected= false) Mouth 2
+                option(value='mouth5', selected= false) Mouth 3
+                option(value='mouth6', selected= false) Mouth 4
+                option(value='mouth7', selected= false) Mouth 5
+                option(value='mouth9', selected= false) Mouth 6
+                option(value='mouth10', selected= false) Mouth 7
+                option(value='mouth11', selected= false) Mouth 8
 
-    select(id='color', class="DDFields",form='colors', name='propertyType', onchange='changed()')
-        option(value='C4232B', selected= true) Red
-        option(value='104e8b', selected= false) Blue
-        option(value='f7fcf3', selected= false) White
-        option(value='ff9d00', selected= false) Orange
-        option(value='ffff00', selected= false) Yellow
-        option(value='303030', selected= false) Black
-        option(value='888888', selected= false) Grey
-        option(value='ffc0cb', selected= false) Pink 
+            select(id='color', class="DDFields",form='colors', name='propertyType', onchange='changed()')
+                option(value='C4232B', selected= true) Red
+                option(value='104e8b', selected= false) Blue
+                option(value='f7fcf3', selected= false) White
+                option(value='ff9d00', selected= false) Orange
+                option(value='ffff00', selected= false) Yellow
+                option(value='303030', selected= false) Black
+                option(value='888888', selected= false) Grey
+                option(value='ffc0cb', selected= false) Pink 
 
-    form
-        input(id="startEye" type="hidden" value=eye)
-        input(id="startNose" type="hidden" value=nose)
-        input(id="startMouth" type="hidden" value=mouth)
-        input(id="startColor" type="hidden" value=color)
+            form
+                input(id="startEye" type="hidden" value=eye)
+                input(id="startNose" type="hidden" value=nose)
+                input(id="startMouth" type="hidden" value=mouth)
+                input(id="startColor" type="hidden" value=color)
 
-    form(id='form' method='post', action='/profile/edit' class="registerForm") 
-        input(id="avatar_input" name="avatar" type="hidden" value=avatar)
-        br
-        label Email:
-        br
-        input(type='text', name='email' value=email)
-        br
-        label Age:
-        br
-        input(type='text', name='age' value=age)
-        br
-        input(type='submit', value='submit')
+            form(id='form' method='post', action='/profile/edit' class="registerForm") 
+                input(id="avatar_input" name="avatar" type="hidden" value=avatar)
+                br
+                label Email:
+                br
+                input(type='text', name='email' value=email)
+                br
+                label Age:
+                br
+                input(type='text', name='age' value=age)
+                br
+                input(type='submit', value='submit')
 
-    img(id="avat", class="avatar", src=avatar)
+        img(id="avat", class="avatar", src=avatar)
     
     script(src='/scripts/avatar.js')
